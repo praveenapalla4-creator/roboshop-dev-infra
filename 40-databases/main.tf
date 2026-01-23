@@ -118,3 +118,43 @@ destination = "/tmp/bootstrap.sh" # Destination on EC2
     ]
   }
 }
+
+resource "aws_instance" "mysql" {
+  ami           =local.ami_id
+  instance_type = "t3.micro"
+  vpc_security_group_ids =[local.mysql_sg_id]
+  subnet_id=local.database_subnet_ids
+  tags = merge(
+    local.common_tags,{
+        Name="${local.common_name_suffix}-mysql" #roboshop-dev-mongodb
+    }
+  )
+  
+}
+
+resource "terraform_data" "mysql" {
+  triggers_replace = [
+    aws_instance.mysql.id
+  ]
+  connection {
+type = "ssh"
+user = "ec2-user"
+password = "DevOps321"
+host = aws_instance.mysql.private_ip
+}
+#terraform copies this file to  mongodb server
+provisioner "file" {
+source = "bootstrap.sh" # Local file path
+destination = "/tmp/bootstrap.sh" # Destination on EC2
+
+
+}
+
+  provisioner "remote-exec" {
+    inline=[
+        "chmod +x /tmp/bootstrap.sh",
+        "sudo sh /tmp/bootstrap.sh mysql"
+
+    ]
+  }
+}
