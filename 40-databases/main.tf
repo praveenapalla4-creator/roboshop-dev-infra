@@ -22,7 +22,7 @@ password = "DevOps321"
 host = aws_instance.mongodb.private_ip
 }
 
-  provisioner "remotw-exec" {
+  provisioner "remote-exec" {
     inline=[
         "echo Hello world"
     ]
