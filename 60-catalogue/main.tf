@@ -15,13 +15,13 @@ resource "aws_instance" "mongodb" {
 # connect to instance using remote-exec provisioner through terraform data or null-resource
 resource "terraform_data" "catalogue" { 
   triggers_replace = [
-    aws_instance.catalogue.id
+    module.catalogue.id
   ]
   connection {
 type = "ssh"
 user = "ec2-user"
 password = "DevOps321"
-host = aws_instance.catalogue.private_ip
+host = module.catalogue.private_ip
 }
 #terraform copies this file to  mongodb server
 provisioner "file" {
