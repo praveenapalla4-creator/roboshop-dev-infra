@@ -30,12 +30,5 @@ resource "aws_lb_listener" "front_end" {
       status_code  = "200"
     }
   }
-  provisioner "remote-exec" {
-    inline=[
-        "chmod +x /tmp/bootstrap.sh",
-        # "sudo sh /tmp/bootstrap.sh"
-        "sudo sh /tmp/bootstrap.sh mongodb"
-
-    ]
-  }
+  
 }
