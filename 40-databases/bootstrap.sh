@@ -1,5 +1,5 @@
 #!/bin/bash
-component=$1
+
 dnf install ansible -y
 # ansible-pull -U https://github.com/praveenapalla4-creator/ansible-roboshop-roles-tf.git -e component=$component main.yaml
 # git clone ansible-playbook
@@ -8,8 +8,9 @@ dnf install ansible -y
 REPO_URL=https://github.com/praveenapalla4-creator/ansible-roboshop-roles-tf.git
 REPO_DIR=/opt/roboshop/ansible
 ANSIBLE_DIR=ansible-roboshop-roles-tf
+component=$1
 mkdir -p $REPO_DIR
-mkdir -p /var/log/roboshop
+mkdir -p /var/log/roboshop/
 touch ansible.log
 
 
