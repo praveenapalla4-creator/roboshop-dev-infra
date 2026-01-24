@@ -6,14 +6,14 @@ resource "aws_instance" "mongodb" {
   subnet_id=local.private_subnet_ids
   tags = merge(
     local.common_tags,{
-        Name="${local.common_name_suffix}-mongodb" #roboshop-dev-mongodb
+        Name="${local.common_name_suffix}-catalogue_sg_id" #roboshop-dev-mongodb
     }
   )
   
 }
 
 # connect to instance using remote-exec provisioner through terraform data or null-resource
-resource "terraform_data" "catalogue" {
+resource "terraform_data" "catalogue" { 
   triggers_replace = [
     aws_instance.catalogue.id
   ]
