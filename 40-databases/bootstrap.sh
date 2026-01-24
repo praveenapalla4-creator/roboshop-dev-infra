@@ -8,7 +8,7 @@ ansible-pull -U https://github.com/praveenapalla4-creator/ansible-roboshop-roles
 # REPO_URL=https://github.com/praveenapalla4-creator/ansible-roboshop-roles-tf.git
 # REPO_DIR=/opt/roboshop/ansible
 # ANSIBLE_DIR=ansible-roboshop-roles-tf
-# component=$1
+component=$1
 # mkdir -p $REPO_DIR
 # mkdir -p /var/log/roboshop/
 # touch ansible.log
