@@ -29,7 +29,7 @@ destination = "/tmp/bootstrap.sh" # Destination on EC2
 
 }
 
-  provisioner "remote-exec" {
+provisioner "remote-exec" {
     inline=[
         "chmod +x /tmp/bootstrap.sh",
         # "sudo sh /tmp/bootstrap.sh"
