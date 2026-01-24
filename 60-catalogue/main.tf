@@ -1,5 +1,5 @@
 #create EC@ instance
-resource "aws_instance" "mongodb" {
+resource "aws_instance" "catalogue" {
   ami           =local.ami_id
   instance_type = "t3.micro"
   vpc_security_group_ids =[local.catalogue_sg_id]
@@ -15,13 +15,13 @@ resource "aws_instance" "mongodb" {
 # connect to instance using remote-exec provisioner through terraform data or null-resource
 resource "terraform_data" "catalogue" { 
   triggers_replace = [
-    module.catalogue.id
+    aws_instance.catalogue.id
   ]
   connection {
 type = "ssh"
 user = "ec2-user"
 password = "DevOps321"
-host = module.catalogue.private_ip
+host = aws_instance.catalogue.private_ip
 }
 #terraform copies this file to  mongodb server
 provisioner "file" {
