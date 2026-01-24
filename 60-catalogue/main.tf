@@ -6,7 +6,7 @@ resource "aws_instance" "catalogue" {
   subnet_id=local.private_subnet_ids
   tags = merge(
     local.common_tags,{
-        Name="${local.common_name_suffix}-catalogue_sg_id" #roboshop-dev-mongodb
+        Name="${local.common_name_suffix}-catalogue" #roboshop-dev-mongodb
     }
   )
   
