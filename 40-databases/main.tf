@@ -11,6 +11,8 @@ resource "aws_instance" "mongodb" {
   
 }
 
+# connect to instance using remote-exec provisioner through terraform data or null-resource
+
 resource "terraform_data" "mongodb" {
   triggers_replace = [
     aws_instance.mongodb.id
@@ -28,7 +30,7 @@ destination = "/tmp/bootstrap.sh" # Destination on EC2
 
 
 }
-
+#terraform copies this file to mongodb server
 provisioner "remote-exec" {
     inline=[
         "chmod +x /tmp/bootstrap.sh",
