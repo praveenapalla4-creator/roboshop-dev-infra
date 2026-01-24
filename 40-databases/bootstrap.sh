@@ -8,7 +8,7 @@ dnf install ansible -y
 REPO_URL=https://github.com/praveenapalla4-creator/ansible-roboshop-roles-tf.git
 REPO_DIR=/opt/roboshop/ansible
 ANSIBLE_DIR=ansible-roboshop-roles-tf
-
+environment=$2
 component=$1
 
 mkdir -p $REPO_DIR
@@ -28,4 +28,4 @@ else
     cd $ANSIBLE_DIR
 fi
 
-ansible-playbook -e component=$component main.yaml
+ansible-playbook -e component=$component  environment=$environment main.yaml
