@@ -14,6 +14,8 @@ resource "aws_lb" "frontend-alb" {
     }
   )
 }
+
+
 resource "aws_lb_listener" "frontend-alb" {
   load_balancer_arn = aws_lb.frontend-alb.arn
   port              = "443"
@@ -43,8 +45,8 @@ resource "aws_route53_record" "frontend_alb" {
   allow_overwrite = true
   alias {
     #these are ALB details, not our details
-    name                   = aws_lb.frontend_alb.dns_name
-    zone_id                = aws_lb.frontend_alb.zone_id
+    name                   = aws_lb.frontend-alb.dns_name
+    zone_id                = aws_lb.frontend-alb.zone_id
     evaluate_target_health = true
   }
 }
