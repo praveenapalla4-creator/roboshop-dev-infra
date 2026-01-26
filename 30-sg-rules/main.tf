@@ -76,3 +76,11 @@ resource "aws_security_group_rule" "mongodb_catalogue" {
   protocol            = "tcp"
   to_port           = 27017
 }
+resource "aws_security_group_rule" "catalogue_backend_alb" {
+  security_group_id = local.catalogue_sg_id
+  source_security_group_id= local.backend_alb_sg_id # catalogue nundi mongodb ki connect avthudnhi
+   type              = "ingress"
+  from_port         = 27017
+  protocol            = "tcp"
+  to_port           = 27017
+}
