@@ -67,7 +67,7 @@ resource "aws_lb_target_group" "catalogue" {
   deregistration_delay = 60 #waiting period before deleting the instance
   health_check {
     healthy_threshold   = 2
-    interval            = 2
+    interval            = 10
     matcher             = "200-299"
     path                = "/health"
     port                = 8080
