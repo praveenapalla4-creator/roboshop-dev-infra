@@ -7,7 +7,7 @@ resource "aws_instance" "bastion" {
   user_data= file("bastion.sh") 
  # need more for terraform
 root_block_device {
-  volume_size = -50
+  volume_size = 50
   volume_type= "gp3" #or gp2 depending on your preference
 }
   tags = merge( 
