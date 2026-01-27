@@ -18,5 +18,7 @@ variable "sg_names"{
         "bastion",
         #frontned load balancer this is the security group for craeting load balancer
         "frontend_alb",
-        "backend_alb"]
+        "backend_alb",
+        
+        "open_vpn"]
 }
