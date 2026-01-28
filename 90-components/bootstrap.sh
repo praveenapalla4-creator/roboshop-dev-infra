@@ -9,6 +9,13 @@ component=$1
 
 # # Install Ansible AWS collection
 # ansible-galaxy collection install amazon.aws
+LOG_FILE=/tmp/bootstrap-debug.log
+
+echo "Bootstrap started at $(date)" >> $LOG_FILE
+echo "Component received: $component" >> $LOG_FILE
+echo "Environment received: $environment" >> $LOG_FILE
+echo "----------------------------------" >> $LOG_FILE
+
 
 dnf install ansible  -y
 
@@ -34,5 +41,5 @@ else
     git clone $REPO_URL
     cd $ANSIBLE_DIR
 fi
-
+echo "environmnet is :$2"
 ansible-playbook -e component=$component  -e env=$environment main.yaml
